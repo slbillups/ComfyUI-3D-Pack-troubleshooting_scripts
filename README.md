@@ -25,8 +25,9 @@ https://github.com/MrForExample/ComfyUI-3D-Pack .\ComfyUI\Custom_Nodes\
 
 4. After completion, the script will launch a ComfyUI instance with --listen 0.0.0.0 at the default port - i.e localhost:8188 
 
-[!IMPORTANT]
-The extension will break ComfyUI's litegraph web GUI if it isnt run with --listen 0.0.0.0/127.0.0.1/etc, this is a necessity for thr extension to run; and one of the reasons I personally prefer to keep this ComfyUI instance seperated from my other main instance.
+> [!IMPORTANT]
+
+> The extension will break ComfyUI's litegraph web GUI if it isnt run with --listen 0.0.0.0/127.0.0.1/etc, this is a necessity for thr extension to run; and one of the reasons I personally prefer to keep this ComfyUI instance seperated from my other main instance.
 
 
 ## Script breakdown
