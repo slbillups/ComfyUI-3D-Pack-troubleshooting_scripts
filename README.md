@@ -1,6 +1,8 @@
 # ComfyUI-3D-Pack-troubleshooting_scripts
 A powershell script to resolve common issues with the main client with a bash script coming soon - Docker only :C
 
+#Place the script in ComfyUI's root directory and ensure you have ComfyUI-3D-Pack installed and updated before running.
+
 ## Who is this for?
 
 <details>
