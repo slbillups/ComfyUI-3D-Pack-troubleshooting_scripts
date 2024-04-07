@@ -1,11 +1,62 @@
-# ComfyUI-3D-Pack-troubleshooting_scripts
-A powershell script to resolve common issues with the main client with a bash script coming soon - Docker only :C
+<h1 align="center">ComfyUI-3D-Pack-troubleshooting_scripts</h1>
 
-## Who is this for?
+  <strong>Includes:</strong>
+    <br>
+  - A docker image built for Debian/Ubuntu users as well as an accompanying shell script for pre-requisite libraries and a Dockerfile(to be placed in the ComfyUI-3D-Pack directory).
 
-Win10/11 users having trouble setting up the ComfyUI-3D-Pack. You **must build this using conda(miniconda/anaconda)** and it **must be run in administrative mode**. This script will not work correctly if you have conda installed on your path.
 
-While I have gotten this to work on existing containers, you have the best chance of a successful install by creating a new ComfyUI clone to prevent dependencies from clashing.
+  - A Powershell script for Win10/11 users.
+
+
+## 04/07/24 Debian/Ubuntu
+*Finally finished - I really hope this works for anyone who uses it. If there are issues please let me know. I spent a lot of time tweaking and fixing it so you wouldn't need to do anything after it's built but I've only tested the image on my own machine as of now.*
+
+<details>
+<summary>
+<b>Debian/Ubuntu Instructions</b>
+</summary>
+
+---
+
+### Download and Run the Script
+Download and run the script first - you can run the script from wherever just be sure to run with administrative (sudo) access. Place the Dockerfile in your ComfyUI-3D-Pack folder root - backup or replace the original.
+
+- **[bash script](https://github.com/slbillups/ComfyUI-3D-Pack-troubleshooting_scripts/blob/main/ubuntu_build.sh)**
+- **[Dockerfile](https://github.com/slbillups/ComfyUI-3D-Pack-troubleshooting_scripts/blob/main/Dockerfile)**
+
+The shell script will ensure you have an up-to-date Docker CLI along with the necessary NVIDIA container/runtime for Docker + relevant OpenGL libraries.
+
+> :warning: **WARNING:**  
+> **After the script finishes, LOG OUT** and back in. If you have issues with building the image and I can't help you - you'll likely have to restart by re-running this script.
+
+### Pull and Build the Image
+
+[![Build with Docker](https://img.shields.io/badge/Build%20with-Docker-blue?logo=docker)](https://hub.docker.com/r/sbillups/comfy3d)
+
+
+```Dockerfile
+Docker pull sbillups:comfy3d
+```
+<br>
+Use the same command that the source repository uses to build:<br>
+<br>
+
+```bash
+docker build -t comfy3d . && docker run --rm -it -p 8188:8188 --gpus all comfy3d
+```
+</details>
+</details>
+
+## 04/05/24 Win10/11
+
+<details>
+<summary> 
+<font size="8"><b>Win10/11 instructions</b></font>
+</summary>
+
+
+***
+ 
 
 ## step-by-step guide
 
@@ -31,12 +82,12 @@ https://github.com/MrForExample/ComfyUI-3D-Pack .\ComfyUI\Custom_Nodes\
 
 ## Script breakdown
 
-<details><summary>
-option 1</summary>installs everything including the Chocolately package manager/git CLI if not already installed.
+<details>
+<summary>option 1</summary>installs everything including the Chocolately package manager/git CLI if not already installed.
 </details>
 
-<details><summary>
-option 2</summary>assumes you have the necessary MSVC libraries and cuda runtime/cuda-toolkit installed. If the script fails, and its related to xformers, torch, cuda or onnxruntime, its likely due to a missing package - you can either run option 1 or download the missing package below.
+<details>
+<summary>option 2</summary>assumes you have the necessary MSVC libraries and cuda runtime/cuda-toolkit installed. If the script fails, and its related to xformers, torch, cuda or onnxruntime, its likely due to a missing package - you can either run option 1 or download the missing package below.
 </details>
 
 If you have issues using the script, I'll do my best to assist however if you are running it in a newly built environment as I explained at the top; there shouldn't be any issues.
@@ -55,3 +106,11 @@ If you have issues using the script, I'll do my best to assist however if you ar
 + [Cuda-toolkit - although in the script I'd recommend getting the latest through their site](https://developer.nvidia.com/cuda-downloads)
 
 + [If you really need it - Python 3.11.8](https://www.python.org/downloads/release/python-3118/) 
+
+</details>
+
+## Thanks to
+
+https://github.com/MrForExample/ComfyUI-3D-Pack - the source extension
+
+https://github.com/remsky/ComfyUI3D-Assorted-Wheels - pre-built Linux wheel files
