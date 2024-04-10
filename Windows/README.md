@@ -5,6 +5,9 @@
 
 ***
  
+The only pre-requisite for running this script is [miniconda](https://docs.anaconda.com/free/miniconda/index.html). Conda/Anaconda should work fine too. Download + install. Default install options are fine, **don't add it to path!** - the option to add it to path is unchecked by default. Once it's installed, open a miniconda/conda shell with administrative rights.
+![image](https://github.com/slbillups/ComfyUI-3D-Pack-troubleshooting_scripts/assets/112226699/788ca1e7-3cea-4ff6-9c5c-9caa55e609c0).
+
 
 ## step-by-step guide
 
