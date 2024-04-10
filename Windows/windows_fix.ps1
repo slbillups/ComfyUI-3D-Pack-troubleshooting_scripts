@@ -29,6 +29,13 @@ switch ($userChoice) {
 $rootDir = Get-Location
 Write-Host "Root directory: $rootDir"
 
+#cloning other comfyUI extensions first - probably shouldn't assume the user already has these extensions installed
+git clone https://github.com/ltdrdata/ComfyUI-Manager $rootDir/custom_nodes/ComfyUI-Manager
+git clone https://github.com/MrForExample/ComfyUI-3D-Pack $rootDir/custom_nodes/ComfyUI-3D-Pack
+git clone https://github.com/ltdrdata/ComfyUI-Impact-Pack $rootDir/custom_nodes/ComfyUI-Impact-Pack
+git clone https://github.com/kijai/ComfyUI-KJNodes $rootDir/custom_nodes/ComfyUI-KJNodes
+git clone https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite $rootDir/custom_nodes/ComfyUI-VideoHelperSuite
+
 if ($userChoice -eq "1") {
     # Install Chocolatey if not already installed
     if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
@@ -66,6 +73,7 @@ if ($userChoice -eq "1") {
         }
     }
     if (-not $buildToolsInstalled) {
+		choco install -y vcbuildtools
         choco install -y visualstudio2022buildtools
         choco install -y visualstudio2022-workload-vctools --package-parameters "--add Microsoft.VisualStudio.Component.VC.Llvm.ClangToolset --add Microsoft.VisualStudio.Component.VC.Llvm.Clang"
         choco install -y cuda
@@ -73,7 +81,7 @@ if ($userChoice -eq "1") {
 }
 
 # Create and activate Conda environment
-$condaEnvName = "comfyui_py311"
+$condaEnvName = "comfy3d"
 conda create -n $condaEnvName python=3.11 -y
 conda activate $condaEnvName
 
@@ -100,6 +108,7 @@ $localWheels = @(
     'nvdiffrast-0.3.1-py3-none-any.whl',
     'kiui-0.2.4-py3-none-any.whl',
     'diff_gaussian_rasterization-0.0.0-cp311-cp311-win_amd64.whl'
+	'pointnet2_ops-3.0.0-cp311-cp311-win_amd64.whl'
 )
 
 # Install wheels from the local directory
