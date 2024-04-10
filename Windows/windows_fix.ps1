@@ -73,7 +73,6 @@ if ($userChoice -eq "1") {
         }
     }
     if (-not $buildToolsInstalled) {
-		choco install -y vcbuildtools
         choco install -y visualstudio2022buildtools
         choco install -y visualstudio2022-workload-vctools --package-parameters "--add Microsoft.VisualStudio.Component.VC.Llvm.ClangToolset --add Microsoft.VisualStudio.Component.VC.Llvm.Clang"
         choco install -y cuda
