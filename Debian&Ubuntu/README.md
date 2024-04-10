@@ -16,11 +16,11 @@ The shell script will ensure you have an up-to-date Docker CLI along with the ne
 
 ### Pull and Build the Image
 
-[![Build with Docker](https://img.shields.io/badge/Build%20with-Docker-blue?logo=docker)](https://hub.docker.com/r/sbillups/comfy3d)
+[![Build with Docker](https://img.shields.io/badge/Build%20with-Docker-blue?logo=docker)](https://hub.docker.com/r/sbillups/comfy3d:ubuntu)
 
 
 ```Dockerfile
-Docker pull sbillups:comfy3d
+docker pull sbillups/comfy3d:ubuntu
 ```
 <br>
 Use the same command that the source repository uses to build:<br>
